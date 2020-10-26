@@ -3,6 +3,7 @@ class Profile < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
             has_many :songs, dependent: :destroy
+             has_many :likes
 
     def full_name
     "#{first_name} #{last_name}"

@@ -1,6 +1,7 @@
 class Song < ApplicationRecord
 	belongs_to :profile
     has_one_attached :mp3_audio
+     has_many :likes
 
 	 	extend FriendlyId
   friendly_id :title, use: :slugged

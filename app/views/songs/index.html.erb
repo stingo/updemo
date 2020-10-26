@@ -89,6 +89,36 @@ $(document).ready(function(){
       <span>Update Required</span>
       To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>.
     </div>
+
+
+
+<%#= render partial: "ad", collection: @songs %>
+
+
+
+       <% @songs.each do |song| -%>
+      <%= song.title %>
+
+      <% if signed_in? %>
+          <p>
+          <% if profile_liked?(song.id, current_profile.id) %>
+
+          <%= song.likes.count %> <%= link_to 'favorite', song_like_path(song, like_id(song.id)), method: :delete,  class: 'material-icons' %>
+
+          <% else %>
+            <%= link_to 'favorite_border', song_likes_path(song), method: :post,  class: 'material-icons' %>
+          <% end %>
+          </p>
+          <% end %>
+
+
+      <br>
+    <% end -%>
+
+<br><br>
+
+
+
   </div>
 </div>
 </body>
